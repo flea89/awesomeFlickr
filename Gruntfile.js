@@ -315,6 +315,11 @@ module.exports = function (grunt) {
             unit: {
                 configFile: 'karma.conf.js',
                 singleRun: true
+            },
+            travis:{
+                configFile: 'karma.conf.js',
+                singleRun: true,
+                browsers: ['PhantomJS', 'Firefox']
             }
         },
         cdnify: {
@@ -363,7 +368,6 @@ module.exports = function (grunt) {
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-    'karma'
     ]);
 
     grunt.registerTask('build', [
