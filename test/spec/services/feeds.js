@@ -13,7 +13,7 @@ describe('Service: feeds', function () {
             description: '  ',
             published: '2013-10-16T12:31:24Z',
         }];
-    var url = 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=JSON_CALLBACK&tag=potato&tagsMode=all';
+    var url = 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=JSON_CALLBACK&tags=potato&tagsMode=all';
     // load the service's module
     beforeEach(module('potato.Services'));
 

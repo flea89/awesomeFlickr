@@ -12,7 +12,7 @@ angular.module('potato.Services', [])
                     params: {
                         tagsMode: 'all',
                         format: 'json',
-                        tag: tag,
+                        tags: tag,
                         jsoncallback: 'JSON_CALLBACK'
                     }
                 }).success(function (res) {
@@ -44,7 +44,7 @@ angular.module('potato.Services', [])
                     params: {
                         tagsMode: 'all',
                         format: 'json',
-                        tag: currentTag,
+                        tags: currentTag,
                         jsoncallback: 'JSON_CALLBACK'
                     }
                 }).success(function (res) {
