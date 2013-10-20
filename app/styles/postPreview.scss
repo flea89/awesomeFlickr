@@ -1,0 +1,66 @@
+@import "compass";
+@import "customVariables";
+@import "../bower_components/bootstrap-sass/lib/_variables";
+@import "../bower_components/bootstrap-sass/lib/_mixins";
+$postBackground : #FAFAFA;
+$postImageHeight: 160px;
+$rowInfoHeight: 40px;
+
+.post-preview {
+    @include make-row;    
+    @include border-radius(2px,2px);
+    background-color: $postBackground;
+    border: solid 1px  darken($postBackground, 10%);
+    padding: 15px 0;
+    height: $postImageHeight + 2;
+    margin-bottom: 5px;
+}
+
+
+  .post-preview__image {
+    margin: -15px 0;
+    @include make-xs-column(3, -15);
+    height: $postImageHeight;
+    overflow: hidden;
+    overflow: hidden;
+        img{
+            max-width: 300px;
+            min-height: $postImageHeight;      
+        }
+    }
+    .post-preview__info{
+        @include make-xs-column(9);
+        padding: 30px 30px;
+        > .row{
+        }
+    }
+    
+        .post-preview__info__title{
+            @include make-xs-column(11);
+            @include ellipsis;
+            font-size: 20px;
+        }
+        .post-preview__info__author{
+            @include make-xs-column(4);
+            @include make-sm-column(3);
+        }
+
+        .post-preview__info__date--not-xs {
+            @include make-sm-column(6);
+            @media (max-width: $screen-xs-max) {
+                display: none;
+            }
+        }
+
+        .post-preview__info__date--xs {
+            @include make-xs-column(12);
+            @media (min-width: $screen-xs-max) {
+                display: none;
+            }
+        }
+    
+        .post-preview__info__flickr{
+            @include make-xs-column(6);
+            @include make-sm-column(3);
+
+        }
