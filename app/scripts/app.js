@@ -5,7 +5,7 @@ angular.module('potatoFlickrApp', ['potato.Services'])
     $routeProvider
         .when('/', {
         templateUrl: 'views/main.html',
-        controller: 'MainCtrl'
+        controller: 'feedsController'
     })
         .otherwise({
         redirectTo: '/'

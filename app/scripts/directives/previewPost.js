@@ -6,7 +6,10 @@ angular.module('potatoFlickrApp')
         templateUrl: 'directivesTemplates/postPreview.html',
         restrict: 'A',
         scope: {
-            imgUrl: '@'
+            imgUrl: '@',
+            title: '@',
+            date: '@',
+            authorName:'@'
         },
         link: function postLink(scope, element, attrs) {}
     };
