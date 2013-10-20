@@ -32,6 +32,7 @@ describe('Service: feeds', function () {
     it('should return an object with property getFeeds, getFeed, loadMore of type function', function () {
         expect(typeof feeds.getFeeds).toBe('function');
         expect(typeof feeds.getFeed).toBe('function');
+        expect(typeof feeds.loadMore).toBe('function');
     });
 
 
@@ -110,7 +111,7 @@ describe('Service: feeds', function () {
 
         });
 
-        it('should return any item if all are already parsed', function () {
+        it('it should not return feeds already fetched', function () {
             feeds.getFeeds('potato');
             var my = {
                 spy: function () {}
