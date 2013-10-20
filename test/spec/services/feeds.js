@@ -142,5 +142,51 @@ describe('Service: feeds', function () {
 
     });
 
+    describe('getFeed', function () {
+        var feeds, $q, $rootScope;
+        beforeEach(inject(function (_$httpBackend_, _feeds_, _$q_, _$rootScope_) {
+            feeds = _feeds_;
+            $q = _$q_;
+            $httpBackend = _$httpBackend_;
+            $rootScope = _$rootScope_;
+            $httpBackend.expectJSONP(url).
+            respond({
+                items: feedsAsync
+            });
+        }));
+
+        it('should return the right feed given the index', function () {
+            feeds.getFeeds('potato');
+            $httpBackend.flush();
+            feeds.getFeed(1).then(function (res) {
+                expect(res).toBe(feedsAsync[1]);
+            });
+            $rootScope.$apply();
+        });
+
+        it('should return the right feed also after loadMore', function () {
+            var newFeeds = [].concat(feedsAsync, [{
+                    title: 'new1',
+                    link: 'link1'
+                }, {
+                    title: '',
+                    link: 'link2'
+                }]);
+            feeds.getFeeds('potato');
+            $httpBackend.flush();
+
+            $httpBackend.expectJSONP(url).respond({
+                items: newFeeds
+            });
+
+            feeds.loadMore();
+            $httpBackend.flush();
+            feeds.getFeed(2).then(function (res) {
+                expect(res).toBe(feedsAsync[2]);
+            });
+            $rootScope.$apply(newFeeds[2]);
+        });
+    });
+
 
 });
