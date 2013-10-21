@@ -1,5 +1,5 @@
 angular.module('potato.Services', [])
-    .factory('feedService', ['$http', '$q', function ($http, $q) {
+    .factory('feedService', ['$http', '$q', 'authorService', function ($http, $q, authorService) {
         'use strict';
         var feeds = [];
         var currentTag;
@@ -17,6 +17,9 @@ angular.module('potato.Services', [])
                     }
                 }).success(function (res) {
                     feeds = res.items;
+                    feeds.forEach(function (feed) {
+                        authorService.addAuthorDetail(feed);
+                    });
                     defer.resolve(feeds);
                 }).error(function () {
                     defer.reject('error');
@@ -29,7 +32,7 @@ angular.module('potato.Services', [])
                 //for every post detail.
                 //However getFeed is already coded as an async call to allow a future development that fetches the
                 //post from the Network
-                
+
                 var defer = $q.defer();
                 if (feeds.length > 0) {
                     defer.resolve(feeds[index]);
@@ -59,8 +62,8 @@ angular.module('potato.Services', [])
                             }
                             return !found;
                         });
-                        feeds.push.apply(feeds,newFeeds);
-                        defer.resolve(newFeeds);
+                        feeds.push.apply(feeds, newFeeds);
+                        defer.resolve(feeds);
                     } else {
                         defer.reject();
                     }

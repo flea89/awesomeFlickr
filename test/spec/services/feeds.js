@@ -1,5 +1,12 @@
 describe('Service: feeds', function () {
     'use strict';
+
+    var mockAuthorService = {
+        addAuthorDetail: function (feed) {
+            return feed;
+        }
+    };
+
     var feedsAsync = [{
             title: ' ',
             link: 'link1',
@@ -16,6 +23,11 @@ describe('Service: feeds', function () {
     var url = 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=JSON_CALLBACK&tags=potato&tagsMode=all';
     // load the service's module
     beforeEach(module('potato.Services'));
+    beforeEach(function () {
+        module(function ($provide) {
+            $provide.value('authorService', mockAuthorService);
+        });
+    });
 
     // instantiate service
     var feedService, $httpBackend;
@@ -39,7 +51,7 @@ describe('Service: feeds', function () {
     describe('getFeeds', function () {
         var feedService, $q;
 
-        beforeEach(inject(function (_$httpBackend_, _feedService_, _$q_) {
+        beforeEach(inject(function (_$httpBackend_, _feedService_, _$q_, authorService) {
             feedService = _feedService_;
             $q = _$q_;
             $httpBackend = _$httpBackend_;
@@ -81,7 +93,7 @@ describe('Service: feeds', function () {
             });
         }));
 
-        it('should return the two new items', function () {
+        it('should return the new array whith the new items', function () {
             feedService.getFeeds('potato');
             var my = {
                 spy: function () {}
@@ -103,21 +115,21 @@ describe('Service: feeds', function () {
 
             feedService.loadMore().then(function (res) {
                 my.spy();
-                expect(res.length).toBe(2);
+                expect(res.length).toBe(4);
             });
 
             $httpBackend.flush();
             expect(my.spy).toHaveBeenCalled();
-
         });
 
-        it('it should not return feeds already fetched', function () {
+        it('it should not append feeds already fetched', function () {
             feedService.getFeeds('potato');
             var my = {
                 spy: function () {}
             };
             spyOn(my, 'spy');
             $httpBackend.flush();
+
             var newFeeds = [].concat(feedsAsync, [{
                     title: 'new1',
                     link: 'link1'
@@ -133,7 +145,7 @@ describe('Service: feeds', function () {
 
             feedService.loadMore().then(function (res) {
                 my.spy();
-                expect(res.length).toBe(0);
+                expect(res.length).toBe(4);
             });
             $httpBackend.flush();
             expect(my.spy).toHaveBeenCalled();
