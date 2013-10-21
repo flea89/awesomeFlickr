@@ -1,5 +1,5 @@
 angular.module('potato.Services', [])
-    .factory('feeds', ['$http', '$q', function ($http, $q) {
+    .factory('feedService', ['$http', '$q', function ($http, $q) {
         'use strict';
         var feeds = [];
         var currentTag;

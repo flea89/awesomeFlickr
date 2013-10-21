@@ -18,29 +18,29 @@ describe('Service: feeds', function () {
     beforeEach(module('potato.Services'));
 
     // instantiate service
-    var feeds, $httpBackend;
+    var feedService, $httpBackend;
 
 
-    beforeEach(inject(function (_feeds_) {
-        feeds = _feeds_;
+    beforeEach(inject(function (_feedService_) {
+        feedService = _feedService_;
     }));
 
     it('should return an object', function () {
-        expect(typeof feeds).toBe('object');
+        expect(typeof feedService).toBe('object');
     });
 
     it('should return an object with property getFeeds, getFeed, loadMore of type function', function () {
-        expect(typeof feeds.getFeeds).toBe('function');
-        expect(typeof feeds.getFeed).toBe('function');
-        expect(typeof feeds.loadMore).toBe('function');
+        expect(typeof feedService.getFeeds).toBe('function');
+        expect(typeof feedService.getFeed).toBe('function');
+        expect(typeof feedService.loadMore).toBe('function');
     });
 
 
     describe('getFeeds', function () {
-        var feeds, $q;
+        var feedService, $q;
 
-        beforeEach(inject(function (_$httpBackend_, _feeds_, _$q_) {
-            feeds = _feeds_;
+        beforeEach(inject(function (_$httpBackend_, _feedService_, _$q_) {
+            feedService = _feedService_;
             $q = _$q_;
             $httpBackend = _$httpBackend_;
             $httpBackend.expectJSONP(url).
@@ -51,7 +51,7 @@ describe('Service: feeds', function () {
 
 
         it('should return a promise and fullfill it whith an array of 2 elements', function () {
-            var feedsPromise = feeds.getFeeds('potato');
+            var feedsPromise = feedService.getFeeds('potato');
             var foo = {
                 setBar: function () {}
             };
@@ -70,9 +70,9 @@ describe('Service: feeds', function () {
     });
 
     describe('loadMore', function () {
-        var feeds, $q;
-        beforeEach(inject(function (_$httpBackend_, _feeds_, _$q_) {
-            feeds = _feeds_;
+        var feedService, $q;
+        beforeEach(inject(function (_$httpBackend_, _feedService_, _$q_) {
+            feedService = _feedService_;
             $q = _$q_;
             $httpBackend = _$httpBackend_;
             $httpBackend.expectJSONP(url).
@@ -82,7 +82,7 @@ describe('Service: feeds', function () {
         }));
 
         it('should return the two new items', function () {
-            feeds.getFeeds('potato');
+            feedService.getFeeds('potato');
             var my = {
                 spy: function () {}
             };
@@ -101,7 +101,7 @@ describe('Service: feeds', function () {
                 items: newFeeds
             });
 
-            feeds.loadMore().then(function (res) {
+            feedService.loadMore().then(function (res) {
                 my.spy();
                 expect(res.length).toBe(2);
             });
@@ -112,7 +112,7 @@ describe('Service: feeds', function () {
         });
 
         it('it should not return feeds already fetched', function () {
-            feeds.getFeeds('potato');
+            feedService.getFeeds('potato');
             var my = {
                 spy: function () {}
             };
@@ -131,7 +131,7 @@ describe('Service: feeds', function () {
                 items: newFeeds
             });
 
-            feeds.loadMore().then(function (res) {
+            feedService.loadMore().then(function (res) {
                 my.spy();
                 expect(res.length).toBe(0);
             });
@@ -143,9 +143,9 @@ describe('Service: feeds', function () {
     });
 
     describe('getFeed', function () {
-        var feeds, $q, $rootScope;
-        beforeEach(inject(function (_$httpBackend_, _feeds_, _$q_, _$rootScope_) {
-            feeds = _feeds_;
+        var feedService, $q, $rootScope;
+        beforeEach(inject(function (_$httpBackend_, _feedService_, _$q_, _$rootScope_) {
+            feedService = _feedService_;
             $q = _$q_;
             $httpBackend = _$httpBackend_;
             $rootScope = _$rootScope_;
@@ -156,9 +156,9 @@ describe('Service: feeds', function () {
         }));
 
         it('should return the right feed given the index', function () {
-            feeds.getFeeds('potato');
+            feedService.getFeeds('potato');
             $httpBackend.flush();
-            feeds.getFeed(1).then(function (res) {
+            feedService.getFeed(1).then(function (res) {
                 expect(res).toBe(feedsAsync[1]);
             });
             $rootScope.$apply();
@@ -172,16 +172,16 @@ describe('Service: feeds', function () {
                     title: '',
                     link: 'link2'
                 }]);
-            feeds.getFeeds('potato');
+            feedService.getFeeds('potato');
             $httpBackend.flush();
 
             $httpBackend.expectJSONP(url).respond({
                 items: newFeeds
             });
 
-            feeds.loadMore();
+            feedService.loadMore();
             $httpBackend.flush();
-            feeds.getFeed(2).then(function (res) {
+            feedService.getFeed(2).then(function (res) {
                 expect(res).toBe(newFeeds[2]);
             });
             $rootScope.$apply(newFeeds[2]);
