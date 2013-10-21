@@ -59,7 +59,7 @@ angular.module('potato.Services', [])
                             }
                             return !found;
                         });
-                        feeds.concat(newFeeds);
+                        feeds.push.apply(feeds,newFeeds);
                         defer.resolve(newFeeds);
                     } else {
                         defer.reject();

@@ -165,7 +165,7 @@ describe('Service: feeds', function () {
         });
 
         it('should return the right feed also after loadMore', function () {
-            var newFeeds = [].concat(feedsAsync, [{
+            var newFeeds = feedsAsync.concat([{
                     title: 'new1',
                     link: 'link1'
                 }, {
@@ -182,7 +182,7 @@ describe('Service: feeds', function () {
             feeds.loadMore();
             $httpBackend.flush();
             feeds.getFeed(2).then(function (res) {
-                expect(res).toBe(feedsAsync[2]);
+                expect(res).toBe(newFeeds[2]);
             });
             $rootScope.$apply(newFeeds[2]);
         });
