@@ -1,6 +1,6 @@
 'use strict';
 
-describe('Controller: MainCtrl', function () {
+describe('Controller: feedsController', function () {
 
     // load the controller's module
     beforeEach(module('potatoFlickrApp'));
@@ -17,10 +17,12 @@ describe('Controller: MainCtrl', function () {
                 var defer = $q.defer();
                 defer.resolve([
                     {
-                        title: 'title one'
+                        title: 'title one',
+                        link: 'link1'
                     },
                     {
-                        title: 'title two'
+                        title: 'title two',
+                        link: 'link2'
                     }
                 ]);
                 return defer.promise;
@@ -29,10 +31,20 @@ describe('Controller: MainCtrl', function () {
                 var defer = $q.defer();
                 defer.resolve([
                     {
-                        title: 'title three'
+                        title: 'title one',
+                        link: 'link1'
                     },
                     {
-                        title: 'title four'
+                        title: 'title two',
+                        link: 'link2'
+                    },
+                    {
+                        title: 'title three',
+                        link: 'link3'
+                    },
+                    {
+                        title: 'title four',
+                        link: 'link3'
                     }
                 ]);
                 return defer.promise;
@@ -42,10 +54,10 @@ describe('Controller: MainCtrl', function () {
         feedsController = $controller('feedsController', {
             $scope: scope,
             feedService: mockfeeds,
-            feeds: [{},{}]
+            feeds: [{}, {}]
         });
     }));
-    
+
     it('should attach feeds to the scope', function () {
         expect(scope.feeds.length).toBe(2);
     });

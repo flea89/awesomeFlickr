@@ -2,7 +2,7 @@
 
 angular.module('potatoFlickrApp')
     .controller('feedsController', function ($scope, feeds, feedService) {
-    $scope.feeds = angular.copy(feeds);
+    $scope.feeds = feeds;
 
     $scope.$watch('tag', function (newValue, oldValue) {
         if (newValue !== oldValue) {
@@ -11,17 +11,16 @@ angular.module('potatoFlickrApp')
                 $scope.tagName = $scope.tag;
             });
         }
-
     });
         
     $scope.loadMore = function () {
         feedService.loadMore().then(function (res) {
-            if (res.length === 0) {
+            if (res.length === $scope.feeds.length) {
                 $scope.noNewFeeds = true;
             } else {
                 $scope.noNewFeeds = false;
             }
-            $scope.feeds.push.apply($scope.feeds, res);
+            $scope.feeds= res;
         });
     };
 });
