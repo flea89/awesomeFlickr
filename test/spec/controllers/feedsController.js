@@ -1,8 +1,5 @@
 'use strict';
 
-
-
-
 describe('Controller: MainCtrl', function () {
 
     // load the controller's module
@@ -12,9 +9,9 @@ describe('Controller: MainCtrl', function () {
         scope,
         $rootScope;
     // Initialize the controller and a mock scope
-    beforeEach(inject(function ($controller, $rootScope, $q, _$rootScope_) {
-        scope = $rootScope.$new();
+    beforeEach(inject(function ($controller, $q, _$rootScope_) {
         $rootScope = _$rootScope_;
+        scope = $rootScope.$new();
         var mockfeeds = {
             getFeeds: function () {
                 var defer = $q.defer();
@@ -44,18 +41,18 @@ describe('Controller: MainCtrl', function () {
 
         feedsController = $controller('feedsController', {
             $scope: scope,
-            feeds: mockfeeds
+            feedService: mockfeeds,
+            feeds: [{},{}]
         });
-        $rootScope.$apply();
     }));
     
     it('should attach feeds to the scope', function () {
         expect(scope.feeds.length).toBe(2);
     });
 
-    xit('should attach new feed to $scope.feeds', function () {
+    it('should attach new feed to $scope.feeds', function () {
         scope.loadMore();
-        $rootScope.$digest();
+        $rootScope.$apply();
         expect(scope.feeds.length).toBe(4);
     });
 
