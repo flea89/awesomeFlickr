@@ -1,32 +1,133 @@
-$iconSpritePath: "../images/glyphicons-halflings.png";
-$iconWhiteSpritePath: "../images/glyphicons-halflings-white.png";
-
-@import "bootstrap-sass/lib/bootstrap";
+$iconSpritePath:"../images/glyphicons-halflings.png";
+ $iconWhiteSpritePath:"../images/glyphicons-halflings-white.png";
+ @import"customVariables";
+ @import"bootstrap-sass/lib/bootstrap";
+ @import"compass";
 
 /* Put your CSS here */
-html, body {
-  margin: 20px;
+ html {
+    margin:0;
+    padding:0;
 }
-
 body {
     background: #fafafa;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
+    padding: $bodyMargin 7px 0 7px;
+    background-color: $bodyBackground;
 }
-
-.hero-unit {
-    margin: 50px auto 0 auto;
-    width: 300px;
-    font-size: 18px;
-    font-weight: 200;
-    line-height: 30px;
-    background-color: #eee;
-    border-radius: 6px;
-    padding: 60px;
+.navbar-brand {
+    padding: 5px 15px;
 }
-
-.hero-unit h1 {
-    font-size: 60px;
-    line-height: 1;
-    letter-spacing: -1px;
+.navbar {
+    @include single-box-shadow(rgba(0, 0, 0, 0.08), 0px, 1px, 1px, 0px);
+}
+@media (max-width: $screen-xs-max) {
+    .navbar .navbar-form {
+        border-width: 0;
+        .btn {
+            width:100%
+        }
+    }
+}
+.tagBar {
+    text-transform:capitalize;
+    h1 {
+        margin-top: 2px;
+        font-weight: 200;
+    }
+}
+.load-more {
+    @include make-row;
+    text-align: center;
+    background-color: $postBackground;
+    border: solid 1px darken($postBackground, 10%);
+    padding: 10px 0;
+    margin-bottom: 30px;
+    font-size: 19px;
+    cursor:pointer;
+}
+.load-more:hover {
+    color: #0083B3;
+}
+.alertFeeds {
+    @include make-row;
+    text-align:center;
+    font-size: 15px;
+    margin-top: 15px 20px;
+}
+.post-detail {
+    @include border-radius(2px, 2px);
+    background-color: $postBackground;
+    border: solid 1px darken($postBackground, 10%);
+    padding: 15px 0;
+    margin-bottom: 5px;
+    padding: 20px 20px;
+    >.row {
+        position: relative;
+        .btn-default {
+            position:absolute;
+            top: 5px;
+            right: 10px;
+        }
+    }
+    .title {
+        @include make-xs-column(10);
+        @include ellipsis;
+        font-size: 26px;
+        margin-bottom: 10px;
+        text-transform:capitalize;
+    }
+    .info {
+        @include make-row;
+        margin-top: 5px;
+        margin-bottom: 24px;
+        .author {
+            @include make-xs-column(4);
+            @include make-md-column(3);
+            @include ellipsis;
+            font-weight: bold;
+            text-transform:capitalize;
+        }
+        .date {
+            .label-date {
+                font-weight: bold;
+            }
+            @include ellipsis;
+            @include make-xs-column(7);
+        }
+    }
+    .content {
+        @include make-row;
+        .post-image {
+            @include make-xs-column(3);
+            @include make-lg-column(3);
+            height: $postImageHeight;
+            overflow: hidden;
+            overflow: hidden;
+            img {
+                max-width: 300px;
+                min-width:300px;
+                min-height: $postImageHeight;
+            }
+        }
+        .description {
+            @include make-xs-column(9);
+        }
+    }
+    .tag {
+        margin-top: 10px;
+    }
+    >row {
+        position:relative;
+    }
+    .google-plus {
+            float: right;
+            margin-right: 15px;
+        }
+}
+@media (max-width: $screen-xs-max) {
+    .post-detail {
+        padding: 5px;
+    }
 }
