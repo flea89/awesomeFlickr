@@ -13,6 +13,8 @@
 
         <!-- build:css(.tmp) styles/main.css -->
         <link rel="stylesheet" href="styles/main.css">
+        <link rel="stylesheet" href="styles/postPreview.css">
+        <link rel="stylesheet" href="styles/animation.css">
         <!-- endbuild -->
 </head>
   <body ng-app="potatoFlickrApp">
@@ -26,7 +28,12 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div class="container" ng-view=""></div>
+    <div class="container" ng-controller="MainController">
+        <div topbar='main' tag="tag"></div>
+        <div class="{{animationDirection}}" >
+            <div class="" ng-view=""></div>
+        </div>
+    </div>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
      <script>
@@ -38,7 +45,7 @@
        ga('create', 'UA-XXXXX-X');
        ga('send', 'pageview');
     </script>
-
+    <script type="text/javascript" src="https://apis.google.com/js/plusone.js"></script>
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.js"></script>
 
@@ -60,12 +67,20 @@
         <!-- build:js scripts/modules.js -->
         <script src="bower_components/angular-resource/angular-resource.js"></script>
         <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="bower_components/angular-route/angular-route.js"></script>
+        <script src="bower_components/angular-animate/angular-animate.js"></script>
         <!-- endbuild -->
 
         <!-- build:js({.tmp,app}) scripts/scripts.js -->
         <script src="scripts/app.js"></script>
-        <script src="scripts/controllers/main.js"></script>
+        <script src="scripts/controllers/feedsController.js"></script>
         <script src="scripts/services/feeds.js"></script>
+        <script src="scripts/directives/topbar.js"></script>
+        <script src="scripts/directives/previewPost.js"></script>
+        <script src="scripts/controllers/mainController.js"></script>
+        <script src="scripts/controllers/feedDetail.js"></script>
+        <script src="scripts/services/authorService.js"></script>
+        <script src="scripts/directives/gplus.js"></script>
         <!-- endbuild -->
 </body>
 </html>
