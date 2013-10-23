@@ -62,8 +62,13 @@ angular.module('potato.Services', [])
                             }
                             return !found;
                         });
-                        feeds.push.apply(feeds, newFeeds);
-                        defer.resolve(feeds);
+                        newFeeds.forEach(function (feed) {
+                            authorService.addAuthorDetail(feed);
+                        });
+                        var newFeedsArray = feeds.concat(newFeeds);
+                        feeds = newFeedsArray;
+                        defer.resolve(newFeedsArray);
+                        
                     } else {
                         defer.reject();
                     }
