@@ -320,6 +320,9 @@ module.exports = function (grunt) {
                 configFile: 'karma.conf.js',
                 singleRun: true,
                 browsers: ['PhantomJS', 'Firefox']
+            },{
+                configFile: 'karma-e2e.conf.js',
+                singleRun: true
             }
         },
         cdnify: {
@@ -368,6 +371,7 @@ module.exports = function (grunt) {
     'concurrent:test',
     'autoprefixer',
     'connect:test',
+    'karma:unit'
     ]);
 
     grunt.registerTask('build', [
