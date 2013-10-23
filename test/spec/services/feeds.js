@@ -145,7 +145,7 @@ describe('Service: feeds', function () {
 
             feedService.loadMore().then(function (res) {
                 my.spy();
-                expect(res.length).toBe(4);
+                expect(res.length).toBe(2);
             });
             $httpBackend.flush();
             expect(my.spy).toHaveBeenCalled();
@@ -179,10 +179,10 @@ describe('Service: feeds', function () {
         it('should return the right feed also after loadMore', function () {
             var newFeeds = feedsAsync.concat([{
                     title: 'new1',
-                    link: 'link1'
+                    link: 'link3'
                 }, {
                     title: '',
-                    link: 'link2'
+                    link: 'link4'
                 }]);
             feedService.getFeeds('potato');
             $httpBackend.flush();
@@ -196,7 +196,7 @@ describe('Service: feeds', function () {
             feedService.getFeed(2).then(function (res) {
                 expect(res).toBe(newFeeds[2]);
             });
-            $rootScope.$apply(newFeeds[2]);
+            $rootScope.$apply();
         });
     });
 

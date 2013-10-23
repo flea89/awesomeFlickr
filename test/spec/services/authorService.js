@@ -1,10 +1,11 @@
 'use strict';
 
 describe('Service: authorService', function () {
-    var url = 'http://api.flickr.com/services/rest/?api_key=420cd85af2900ce8637ef0f5ff42496a&format=json&jsoncallback=JSON_CALLBACK&method=flickr.people.getInfo&user_id=9418798';
+    var url = 'http://api.flickr.com/services/rest/?api_key=dd7d2fcd63a0e3c724d3c76622a1a547&format=json&jsoncallback=JSON_CALLBACK&method=flickr.people.getInfo&user_id=9418798';
     // load the service's module
     beforeEach(module('potatoFlickrApp'));
 
+    
     // instantiate service
     var authorService, $httpBackend;
     beforeEach(inject(function (_authorService_, _$httpBackend_) {
