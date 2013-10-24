@@ -7,17 +7,20 @@ v0.1.0 Goals:
 
 * Display a list of public feeds against tag name given by the user
 * Display a the detail of the feed
-* 
+
 ##Installation 
 
 1. Clone the project on your local machine
 2. Run `npm install & bower install`
 3. Start your server using `grunt server`
 
+##Build
+To build the application [minify, unglify, imagemin and other cool stuff] run `grunt build`
+
 ##Test
 
 1. Run `grunt test` to run karma unit test
-2. Run `grunt e2e-test` to run scenario test ( be sure to have the server running on port 9000, if not run before `grunt server`) 
+2. Run `grunt karma:e2e` to run scenario test ( be sure to have the server running on port 9000, if not run before `grunt server`) 
 
 ##TODO
 1. Add animations: the configuration and upgrade of Angular to the 1.2.0 is done.
