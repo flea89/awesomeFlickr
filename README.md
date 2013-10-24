@@ -21,6 +21,7 @@ To build the application [minify, unglify, imagemin and other cool stuff] run `g
 
 1. Run `grunt test` to run karma unit test
 2. Run `grunt karma:e2e` to run scenario test ( be sure to have the server running on port 9000, if not run before `grunt server`) 
+3. If you use Brackets, you can install the awesome plugin karma-brackets, specifying in the configuration karma-brackets.conf.js as configuration file.
 
 ##TODO
 1. Add animations: the configuration and upgrade of Angular to the 1.2.0 is done.
