@@ -22,7 +22,7 @@ describe('Service: feeds', function () {
         }];
     var url = 'http://api.flickr.com/services/feeds/photos_public.gne?format=json&jsoncallback=JSON_CALLBACK&tags=potato&tagsMode=all';
     // load the service's module
-    beforeEach(module('potato.Services'));
+    beforeEach(module('potatoFlickrApp'));
     beforeEach(function () {
         module(function ($provide) {
             $provide.value('authorService', mockAuthorService);
