@@ -16,6 +16,7 @@ body {
     padding: $bodyMargin 7px 0 7px;
     background-color: $bodyBackground;
 }
+
 .navbar-brand {
     padding: 5px 15px;
 }
@@ -23,6 +24,7 @@ body {
     @include single-box-shadow(rgba(0, 0, 0, 0.08), 0px, 1px, 1px, 0px);
 }
 @media (max-width: $screen-xs-max) {
+
     .navbar .navbar-form {
         border-width: 0;
         .btn {
@@ -57,6 +59,7 @@ body {
     margin-top: 15px 20px;
 }
 .post-detail {
+    @include make-row;
     @include border-radius(2px, 2px);
     background-color: $postBackground;
     border: solid 1px darken($postBackground, 10%);
@@ -123,7 +126,7 @@ body {
     }
     .google-plus {
             float: right;
-            margin-right: 15px;
+            margin-right: 10px;
         }
 }
 @media (max-width: $screen-xs-max) {

@@ -1,29 +1,27 @@
 @import "customVariables";
 @import "compass";
 
-.example-animate-container {
-}
 
-.view-example.ng-enter, .view-example.ng-leave {    
-    @include transition-property;
-    @include transition-duration(3s);
-}
+@media (max-width: $screen-xs-max) {
 
-
-.view-example.ng-enter {
-    @include translate3d(100%,0,0,0);
-//    opacity: 0;
-}
-.view-example.ng-enter.ng-enter-active {
-    @include translate3d(0,0,0,0);
-//    opacity: 1;
-}
-
-
-.view-example.ng-leave {
-//    opacity:1;
-}
-.view-example.ng-leave.ng-leave-active {
-    @include translate3d(-1000%,0,0,0);
-//    opacity: 0;
+    .view-example.ng-enter, .view-example.ng-leave {    
+        @include transition-property;
+        @include transition-duration(0.3s);
+        position:absolute;
+    }
+    
+    
+    .view-example.ng-enter {
+        @include translate3d(100%,0,0,0);
+    }
+    .view-example.ng-enter.ng-enter-active {
+        @include translate3d(0,0,0,0);
+    }
+    
+    
+    .view-example.ng-leave {
+    }
+    .view-example.ng-leave.ng-leave-active {
+        @include translate3d(-100%,0,0,0);
+    }
 }

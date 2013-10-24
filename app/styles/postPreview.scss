@@ -11,15 +11,19 @@
     padding: 15px 0;
     height: $postImageHeight + 2;
     margin-bottom: 5px;
+    overflow: hidden;
+    .row {
+        margin: 10px 0;
+    }
 }
 
 
   .post-preview__image {
+    position:relative;
     margin: -15px 0;
     @include make-xs-column(3, -15);
     @include make-lg-column(2, -15);
     height: $postImageHeight;
-    overflow: hidden;
     overflow: hidden;
         img{
             max-width: 300px;
@@ -30,7 +34,7 @@
     .post-preview__info{
         @include make-xs-column(8);
         @include make-lg-column(9, -15);
-        padding: 30px 0 30px 30px;
+        padding: 5px 0 0px 5%;
     }
     
         .post-preview__info__title{
@@ -77,3 +81,10 @@
                 color: darken($postBackground, 40%)
             }
     }
+
+@media (max-width: $screen-xs-max) {
+    .post-preview__info{
+        padding: 0px 0 0px 5%;
+    }
+
+}
