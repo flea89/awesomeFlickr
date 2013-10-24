@@ -1,7 +1,7 @@
-'use strict';
-
+/*globals gapi:true */
 angular.module('potatoFlickrApp')
     .directive('gplus', function () {
+    'use strict';
     return {
         template: '<div class="google-plus"><div class="g-plusone" data-href="{{link}}" data-annotation="none" data-size="{{size}}"></div></div>',
         restrict: 'EA',

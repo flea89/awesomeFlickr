@@ -40,7 +40,7 @@ module.exports = function (grunt) {
                 tasks: ['coffee:test']
             },
             compass: {
-                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}','<%= yeoman.app %>/bower_components/bootstrap-sass/lib{,*/}*.{scss,sass}' ],
+                files: ['<%= yeoman.app %>/styles/{,*/}*.{scss,sass}', '<%= yeoman.app %>/bower_components/bootstrap-sass/lib{,*/}*.{scss,sass}'],
                 tasks: ['compass:server', 'autoprefixer']
             },
             styles: {
@@ -127,7 +127,6 @@ module.exports = function (grunt) {
                 jshintrc: '.jshintrc'
             },
             all: [
-        'Gruntfile.js',
         '<%= yeoman.app %>/scripts/{,*/}*.js'
             ]
         },
@@ -316,7 +315,7 @@ module.exports = function (grunt) {
                 configFile: 'karma.conf.js',
                 singleRun: true
             },
-            travis:{
+            travis: {
                 configFile: 'karma.conf.js',
                 singleRun: true,
                 browsers: ['PhantomJS', 'Firefox']
@@ -372,7 +371,7 @@ module.exports = function (grunt) {
     'concurrent:test',
     'autoprefixer',
     'connect:test',
-    'karma:test'
+    'karma:unit'
     ]);
 
     grunt.registerTask('build', [
