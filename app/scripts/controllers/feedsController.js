@@ -1,5 +1,6 @@
 angular.module('potatoFlickrApp')
     .controller('feedsController', ['$scope', 'feeds', 'feedService', function ($scope, feeds, feedService) {
+
         'use strict';
 
         $scope.feeds = feeds;
