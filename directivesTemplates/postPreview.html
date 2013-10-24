@@ -1,1 +1,24 @@
-<div class=post-preview><div class=post-preview__image><img ng-src={{imgUrl}} alt="" class=""></div><div class=post-preview__info><div class=row><div class=row><div class=post-preview__info__title>{{title}}.</div></div><div class=row><div class=post-preview__info__date--xs><b>Published:</b> {{date | date:'d MMM y, h:mm'}}</div></div><div class=row><div class=post-preview__info__author><a href={{profileLink}} target=_tab>{{authorName || 'Awesome Name'}}</a></div><div class=post-preview__info__date--not-xs><b>Published:</b> {{date | date:'d MMM y, h:mm'}}</div><div class=post-preview__info__flickr><a href={{feedLink}} target=_tab>View Flickr</a></div></div></div></div><a href=#/feedDetail/{{index}}><div class=post-preview__select ng-click="goToDetail({index: $index})"><span>&gt;</span></div></a></div>
+<div class="post-preview">
+    <div class="post-preview__image">
+        <img ng-src="{{imgUrl}}" alt="" class="">
+    </div>
+    <div class="post-preview__info">
+        <div class="row">
+            <div class="row">
+                <a href="#/feedDetail/{{index}}"><div class="post-preview__info__title">{{title}}.</div></a>
+            </div>
+            <div class="row">
+                <div class="post-preview__info__date--xs"><b>Published:</b> {{date | date:'d MMM y, h:mm'}}</div>
+            </div>
+            <div class="row">
+                <div class="post-preview__info__author">
+                    <a href="{{profileLink}}" target="_tab">{{authorName || 'Awesome Name'}}</a>
+                </div>
+                <div class="post-preview__info__date--not-xs"><b>Published:</b> {{date | date:'d MMM y, h:mm'}}</div>
+                <div class="post-preview__info__flickr">
+                    <a href="{{feedLink}}" target="_tab">View Flickr</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
