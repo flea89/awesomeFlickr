@@ -6,8 +6,9 @@ angular.module('potatoFlickrApp')
 
     $scope.$watch('tag', function (newValue, oldValue) {
         if (newValue !== oldValue) {
+            $scope.noNewFeeds = false;
             feedService.getFeeds($scope.tag).then(function (pFeeds) {
-                $scope.feeds = angular.copy(pFeeds);
+                $scope.feeds = pFeeds;
                 $scope.tagName = $scope.tag;
             });
         }

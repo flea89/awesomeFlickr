@@ -26,7 +26,7 @@ angular.module('potatoFlickrApp', ['potato.Services', 'ngRoute', 'ngAnimate', 'n
     });
 });
 
-angular.module('potatoFlickrApp').run(function ($rootScope) {
+angular.module('potatoFlickrApp').run(function ($rootScope,$location) {
     $rootScope.$on("$locationChangeSuccess", function (event, next, current) {
         if (next.match(/\/feedDetail\//)) {
             $rootScope.animationDirection = 'reverse';
@@ -34,5 +34,12 @@ angular.module('potatoFlickrApp').run(function ($rootScope) {
             $rootScope.animationDirection = '';
         }
     });
+
+    $rootScope.$on("$routeChangeError", function (event, next, current) {
+        $location.path('/');
+    });
+
+
+    
 
 });
