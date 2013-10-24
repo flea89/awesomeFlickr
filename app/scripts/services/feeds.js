@@ -1,4 +1,4 @@
-angular.module('potato.Services', [])
+angular.module('potatoFlickrApp')
     .factory('feedService', ['$http', '$q', 'authorService', function ($http, $q, authorService) {
         'use strict';
         var feeds = [];

@@ -1,7 +1,7 @@
 'use strict';
 
-angular.module('potatoFlickrApp', ['potato.Services', 'ngRoute', 'ngAnimate', 'ngSanitize'])
-    .config(function ($routeProvider) {
+angular.module('potatoFlickrApp', ['ngRoute', 'ngAnimate', 'ngSanitize'])
+    .config(['$routeProvider', function ($routeProvider) {
     $routeProvider
         .when('/', {
         templateUrl: 'views/main.html',
@@ -24,22 +24,18 @@ angular.module('potatoFlickrApp', ['potato.Services', 'ngRoute', 'ngAnimate', 'n
         .otherwise({
         redirectTo: '/'
     });
-});
+}]);
 
-angular.module('potatoFlickrApp').run(function ($rootScope,$location) {
-    $rootScope.$on('$locationChangeSuccess', function (event, next, current) {
-        if (next.match(/\/feedDetail\//)) {
-            $rootScope.animationDirection = 'reverse';
-        } else {
-            $rootScope.animationDirection = '';
-        }
-    });
+angular.module('potatoFlickrApp').run(['$rootScope', '$location', function ($rootScope, $location) {
+        $rootScope.$on('$locationChangeSuccess', function (event, next, current) {
+            if (next.match(/\/feedDetail\//)) {
+                $rootScope.animationDirection = 'reverse';
+            } else {
+                $rootScope.animationDirection = '';
+            }
+        });
 
-    $rootScope.$on('$routeChangeError', function (event, next, current) {
-        $location.path('/');
-    });
-
-
-    
-
-});
+        $rootScope.$on('$routeChangeError', function (event, next, current) {
+            $location.path('/');
+        });
+    }]);

@@ -1,7 +1,6 @@
-'use strict';
-
 angular.module('potatoFlickrApp')
     .factory('authorService', ['$http', function ($http) {
+        'use strict';
         return {
             addAuthorDetail: function (feed) {
                 $http.jsonp('http://api.flickr.com/services/rest/', {
