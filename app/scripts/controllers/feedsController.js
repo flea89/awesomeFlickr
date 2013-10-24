@@ -4,7 +4,7 @@ angular.module('potatoFlickrApp')
         'use strict';
 
         $scope.feeds = feeds;
-
+        $scope.isLoading = false;
         $scope.$watch('tag', function (newValue, oldValue) {
             if (newValue !== oldValue) {
                 $scope.noNewFeeds = false;
@@ -16,12 +16,15 @@ angular.module('potatoFlickrApp')
         });
 
         $scope.loadMore = function () {
+            $scope.isLoading = true;
+            $scope.noNewFeeds = false;
             feedService.loadMore().then(function (res) {
                 if (res.length === $scope.feeds.length) {
                     $scope.noNewFeeds = true;
                 } else {
                     $scope.noNewFeeds = false;
                 }
+                $scope.isLoading = false;
                 $scope.feeds = res;
             });
         };
