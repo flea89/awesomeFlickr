@@ -4,5 +4,5 @@
 <div id="list" ng-repeat="feed in feeds" preview-post="post" title="{{feed.title}}" img-url="{{feed.media.m}}" date="{{feed.published }}" author-name="{{feed.authorName}}" profile-link="{{feed.profileLink}}" feed-link="{{feed.link}}" index="{{$index}}"></div>
 <div class="alert alert-info alertFeeds" ng-show="noNewFeeds">Can't find new feeds at the moment, try later!</div>
 <div class="load-more" ng-click="loadMore()">
-    <span class="load-more"><img src="/images/ff149633.load.gif" alt="load" ng-show="isLoading">Load More</span>
+    <span class="load-more"><img src="images/ff149633.load.gif" alt="load" ng-show="isLoading">Load More</span>
 </div>
