@@ -9,7 +9,10 @@ angular.module('potatoFlickrApp')
             imgUrl: '@',
             title: '@',
             date: '@',
-            authorName:'@'
+            authorName:'@',
+            index: '@',
+            feedLink: '@',
+            profileLink: '@'
         },
         link: function postLink(scope, element, attrs) {}
     };
