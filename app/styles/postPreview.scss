@@ -21,29 +21,29 @@
   .post-preview__image {
     position:relative;
     margin: -15px 0;
-    @include make-xs-column(3, -15);
+    @include make-xs-column(4, -15);
+    @include make-sm-column(3, -15);
     @include make-lg-column(2, -15);
     height: $postImageHeight;
     overflow: hidden;
         img{
-            max-width: 300px;
-            min-width:300px;
             min-height: $postImageHeight;      
         }
     }
     .post-preview__info{
         @include make-xs-column(8);
+        @include make-sm-column(9, -15);
         @include make-lg-column(9, -15);
         padding: 5px 0 0px 5%;
     }
     
         .post-preview__info__title{
-            @include make-xs-column(11);
+            @include make-xs-column(12);
             @include ellipsis;
             font-size: 20px;
         }
         .post-preview__info__author{
-            @include make-xs-column(6);
+            @include make-xs-column(8);
             @include make-sm-column(3);
         }
 
@@ -62,29 +62,53 @@
         }
     
         .post-preview__info__flickr{
-            @include make-xs-column(6);
+            @include make-xs-column(4);
             @include make-sm-column(3);
 
         }
 
-    .post-preview__select {
-        @include make-xs-column(1,0);
-        border-left: 1px solid darken($postBackground, 13%);
-        height: 100%;
-        text-align:center;
-            span {
-                font-size: 20px;
-                position:absolute;
-                top: 50%;
-                margin-top: -20px;
-                font-weight:500;
-                color: darken($postBackground, 40%)
-            }
-    }
 
 @media (max-width: $screen-xs-max) {
     .post-preview__info{
-        padding: 0px 0 0px 5%;
+        padding: 0;
+    }
+    
+    .post-preview__info__title{
+            font-size: 18px;
+        }
+    
+      .post-preview__image {
+        img{
+            min-width:$container-tablet * 0.33;
+            min-height: $postImageHeight;      
+        }
     }
 
+}
+
+@media (min-width: $screen-tablet) and (max-width: $screen-desktop) {    
+      .post-preview__image {
+        img{
+            min-width:$container-desktop * 0.25;
+            min-height: $postImageHeight;      
+        }
+    }
+}
+    
+@media (min-width: $screen-desktop) and (max-width: $screen-lg) {    
+      .post-preview__image {
+        img{
+            min-width:$container-lg-desktop * 0.25;
+            min-height: $postImageHeight;      
+        }
+    }
+}
+
+@media (min-width: $screen-lg) {    
+      .post-preview__image {
+        img{
+            min-width:$container-lg-desktop * 0.2;
+            min-height: $postImageHeight;      
+        }
+    }
 }

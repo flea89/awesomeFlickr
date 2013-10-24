@@ -1,0 +1,86 @@
+@import"customVariables";
+ @import"../bower_components/bootstrap-sass/lib/_variables";
+ @import"../bower_components/bootstrap-sass/lib/_mixins";
+ @import"compass";
+ .post-detail {
+    @include make-row;
+    @include border-radius(2px, 2px);
+    background-color: $postBackground;
+    border: solid 1px darken($postBackground, 10%);
+    padding: 15px 0;
+    margin-bottom: 5px;
+    padding: 20px 20px;
+    >.row {
+        position: relative;
+        .btn-default {
+            position:absolute;
+            top: 5px;
+            right: 10px;
+        }
+    }
+    .title {
+        @include make-xs-column(10);
+        @include ellipsis;
+        font-size: 26px;
+        margin-bottom: 10px;
+        text-transform:capitalize;
+    }
+    .info {
+        @include make-row;
+        margin-top: 5px;
+        margin-bottom: 24px;
+        .author {
+            @include make-xs-column(4);
+            @include make-md-column(3);
+            @include ellipsis;
+            font-weight: bold;
+            text-transform:capitalize;
+        }
+        .date {
+            .label-date {
+                font-weight: bold;
+            }
+            @include ellipsis;
+            @include make-xs-column(7);
+        }
+    }
+    .content {
+        @include make-row;
+        .post-image {
+            @include make-xs-column(4);
+            @include make-md-column(3);
+            height: $postImageHeight;
+            overflow: hidden;
+        }
+        .description {
+            @include make-xs-column(8);
+            @include make-md-column(9);
+        }
+    }
+    .tag {
+        margin-top: 10px;
+    }
+    >row {
+        position:relative;
+    }
+    .google-plus {
+        float: right;
+        margin-right: 10px;
+    }
+}
+@media (max-width: $screen-xs-max) {
+    .post-image {
+        height: $container-tablet * 0.2 !important;
+        img {
+            width: $container-tablet * 0.3;
+        }
+    }
+}
+@media (min-width: $screen-tablet) and (max-width: $screen-desktop) {
+    .post-image {
+        height: $container-desktop * 0.2 !important;
+        img {
+            width: $container-desktop * 0.3;
+        }
+    }
+}
