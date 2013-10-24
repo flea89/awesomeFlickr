@@ -1,0 +1,24 @@
+<div class="post-detail">
+    <div class="row">
+        <div class="title"><a href="{{feed.link}}" target="_tab">{{feed.title}}</a></div>
+        <a class="btn btn-default" href="#">Back</a>
+    </div>
+    <div class="info">
+        <div class="author"><a href="{{feed.profileLink}}" target="_tab">{{feed.authorName}}</a></div>
+        <div class="date">
+            <span class="label-date">Published: </span>{{feed.published | date:'d MMM y, h:mm'}}</div>
+    </div>
+    <div class="content">
+        <div class="post-image">
+            <img ng-src="{{feed.media.m}}" alt="">
+        </div>
+        <div class="description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit tempora eius nostrum ea ipsam dolore quod deleniti! Illum, ducimus, dolor? Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium, culpa, nemo? Quia, ad suscipit aliquid similique rerum ullam temporibus consequuntur illo!</div>
+    </div>
+    <div class="row">
+        <div class="col-md-8 col-md-offset-3 tag">
+            <b>Tag:</b>{{feed.tags}}</div>
+    </div>
+    <div class="row">
+        <gplus class="google-plus" size="small" link="{{feed.media.m}}" annotation="{{'none'}}"></gplus>
+    </div>
+</div>
