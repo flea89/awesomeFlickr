@@ -36,7 +36,7 @@ describe('my app', function () {
     });
 
     it('should navigate to the detail page', function () {
-        element('.post-preview:first .post-preview__select').click();
+        element('.post-preview:first .post-preview__info__title').click();
         expect(browser().location().path()).toBe('/feedDetail/0');
     });
 
@@ -44,15 +44,10 @@ describe('my app', function () {
         var link_list;
         element('.post-preview:first .post-preview__info__flickr a').query(function (value,done) {
             link_list = value.attr('href');
-            element('.post-preview:first .post-preview__select').click();
+            element('.post-preview:first .post-preview__info__title').click();
             expect(element('.title a').attr('href')).toEqual(link_list);
             done();
         });
-        
-//        +    element('#password').query(function(elements, done) {
-//+      expect(element('#passwordRepeat').text()).toContain(elements.text());
-//+      done();
-//+    });
 
     });
 
