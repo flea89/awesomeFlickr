@@ -5,7 +5,7 @@
     <div class="post-preview__info">
         <div class="row">
             <div class="row">
-                <div class="post-preview__info__title">{{title}}.</div>
+                <a href="#/feedDetail/{{index}}"><div class="post-preview__info__title">{{title}}.</div></a>
             </div>
             <div class="row">
                 <div class="post-preview__info__date--xs"><b>Published:</b> {{date | date:'d MMM y, h:mm'}}</div>
@@ -21,9 +21,4 @@
             </div>
         </div>
     </div>
-    <a href="#/feedDetail/{{index}}">
-        <div class="post-preview__select" ng-click="goToDetail({index: $index})">
-            <span>&gt;</span>
-        </div>
-    </a>
 </div>
