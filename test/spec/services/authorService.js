@@ -5,7 +5,6 @@ describe('Service: authorService', function () {
     // load the service's module
     beforeEach(module('potatoFlickrApp'));
 
-    
     // instantiate service
     var authorService, $httpBackend;
     beforeEach(inject(function (_authorService_, _$httpBackend_) {

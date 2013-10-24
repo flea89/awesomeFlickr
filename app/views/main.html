@@ -1,11 +1,9 @@
-<div class="hero-unit">
-    <a href="#" ng-click="loadMore()">LOAD MORE</a>
-  <h1>'Allo, 'Allo!</h1>
-  <p>You now have</p>
-  <ul>
-      <li ng-repeat="thing in awesomeThings">{{thing}}</li>
-  </ul>
-  <p>installed.</p>
-  <h3 ng-click="loadMore()">Enjoy coding! - Yeoman</h3>
-
+<div class="tagBar">
+    <h1>{{tagName}}</h1>
 </div>
+<div id="list" ng-repeat="feed in feeds" preview-post='post' title="{{feed.title}}" img-url="{{feed.media.m}}" date="{{feed.published }}" author-name="{{feed.authorName}}" profile-link="{{feed.profileLink}}" feed-link="{{feed.link}}" index="{{$index}}"></div>
+<div class="alert alert-info alertFeeds" ng-show="noNewFeeds">Can't find new feeds at the moment, try later!</div>
+<div class="load-more" ng-click="loadMore()">
+    <span>Load More</span>
+</div>
+
